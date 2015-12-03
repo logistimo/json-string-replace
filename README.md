@@ -70,23 +70,21 @@ grunt.initConfig({
 })
 ```
 
-```testing.json ( Before replace )
+####testing.json ( Before replace )
+```js
 {
     "key":"Testing",
     "key2":"11222333"
 }
 ```
 
-
-
-```testing.json ( After replace )
+####testing.json ( After replace )
+```js
 {
     "key":"Tasting",
     "key2":"11222,333"
 }
 ```
-
-
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
