@@ -2,7 +2,7 @@
   "name": "json-string-replace",
   "version": "0.0.1",
   "description": "Replace strings in json values",
-  "repository": "",
+  "repository": "https://github.com/logistimo/json-string-replace",
   "author": {
     "name": "Charan Malemarpuram",
     "email": "",

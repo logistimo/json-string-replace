@@ -59,7 +59,8 @@ grunt.initConfig({
   json_string_replace: {
     options: {
         replacements : {
-            "apples": "oranges"
+            replacements: {"est":"ast","(\\d+)(\\d{3})":"$1,$2"},
+            global: true
         }
     },
     files: {
@@ -68,6 +69,23 @@ grunt.initConfig({
   },
 })
 ```
+
+```testing.json ( Before replace )
+{
+    "key":"Testing",
+    "key2":"11222333"
+}
+```
+
+
+
+```testing.json ( After replace )
+{
+    "key":"Tasting",
+    "key2":"11222,333"
+}
+```
+
 
 
 ## Contributing

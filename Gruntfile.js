@@ -35,7 +35,7 @@ module.exports = function (grunt) {
     json_string_replace: {
       replacement: {
         options: {
-            replacements: {"est":"ast","st":"sd"},
+            replacements: {"est":"ast","(\\d+)(\\d{3})":"$1,$2"},
             global: true
         },
         files: {
