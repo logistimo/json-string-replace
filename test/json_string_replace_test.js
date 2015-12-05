@@ -37,7 +37,7 @@ exports.json_string_replace = {
 
     test.done();
   },
-  no_replacement: function(test){
+  props_replacement: function(test){
       test.expect(1);
 
 

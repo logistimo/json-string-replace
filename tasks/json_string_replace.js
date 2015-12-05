@@ -19,7 +19,8 @@ module.exports = function (grunt) {
         // Merge task-specific and/or target-specific options with these defaults.
         var options = this.options({
             replacements: {},
-            global: true
+            global: true,
+            type: "json"
         });
 
         // Iterate over all specified file groups.
@@ -36,11 +37,13 @@ module.exports = function (grunt) {
                 })
                 .map(function(filepath) {
                     return {
-                        json: grunt.file.readJSON(filepath),
+                        json: options.type === "json"?grunt.file.readJSON(filepath):null,
+                        props: options.type === "props"?grunt.file.read(filepath):null,
                         path: filepath
                     };
                 })
                 .map(function(file) {
+                    if(file.json !== null){
                     Object.keys(file.json).forEach(function(key) {
                         if (typeof file.json[key] === "string") {
                             var newval = file.json[key];
@@ -57,11 +60,27 @@ module.exports = function (grunt) {
                         }
 
                     });
-
+                    }else if(file.props !== null){
+                        var newprops = "";
+                        file.props.toString().split('\n').forEach(function (line) {
+                            var properties = line.split("=");
+                            var newval = properties[1];
+                            Object.keys(options.replacements).forEach(function (repKey) {
+                                var regex = new RegExp(repKey, options.global ? 'g' : '');
+                                newval = newval.replace(regex, options.replacements[repKey]);
+                            });
+                            if(properties[1] !== newval){
+                                grunt.log.writeln("-"+properties[1]);
+                                grunt.log.writeln("+"+newval);
+                            }
+                            newprops = newprops + properties[0]+"="+newval+"\n";
+                        });
+                        file.props = newprops;
+                    }
                     return file;
                 })
                 .map(function(file) {
-                    grunt.file.write(file.path, JSON.stringify(file.json, null, options.indent));
+                    grunt.file.write(file.path, file.json !== null?JSON.stringify(file.json, null, options.indent):file.props);
                     grunt.log.success('File ' + file.path + ' updated.');
                 });
         });

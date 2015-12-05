@@ -42,10 +42,11 @@ module.exports = function (grunt) {
           'test': ['test/fixtures/testing']
         }
       },
-        no_replacement: {
+        props_replacement: {
             options: {
-                replacements: {"est":"ast"},
-                global: true
+                replacements: {"est":"ast","(\\d+)(\\d{3})":"$1,$2"},
+                global: true,
+                type: "props"
             },
             files: {
                 'test': ['test/fixtures/123']
