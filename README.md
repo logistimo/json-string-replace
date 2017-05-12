@@ -1,6 +1,14 @@
 # json-string-replace
 
-> Replace strings in Key value pair json objects
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+> Replaces text in value strings of key value jsons
+
+## Motivation
+
+JSON based resource bundles which are typically key value pairs are heavily used with js frameworks like angularjs. We required customisations in the resource bundles such that display text can be changed by deployment. All available string replace tasks in Grunt replace the text anywhere in the file, but in this case the text should be replaced only in the values.
+
+We would like to thank contributors of other string replace tasks in grunt, from whose work we could easily build on and develop this in quick time.
 
 ## Getting Started
 This plugin requires Grunt.
