@@ -1,6 +1,6 @@
 {
   "name": "json-string-replace",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "Replace strings in json values",
   "repository": "https://github.com/logistimo/json-string-replace",
   "author": {
@@ -28,6 +28,6 @@
     "test": "grunt test"
   },
   "dependencies": {
-    "lodash": "^3.10.1"
+    "lodash": ">=4.17.13"
   }
 }

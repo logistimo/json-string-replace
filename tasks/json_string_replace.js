@@ -63,18 +63,20 @@ module.exports = function (grunt) {
                     }else if(file.props !== null){
                         var newprops = "";
                         file.props.toString().split('\n').forEach(function (line) {
-                            var properties = line.split("=");
-                            if(properties.length > 1) {
-                                var newval = properties[1];
+                            var index = line.indexOf("=");
+                            if(index > 0) {
+                                var key = line.substr(0,index);
+                                var value = line.substr(index+1);
+                                var newval = value;
                                 Object.keys(options.replacements).forEach(function (repKey) {
                                     var regex = new RegExp(repKey, options.global ? 'g' : '');
                                     newval = newval.replace(regex, options.replacements[repKey]);
                                 });
-                                if (properties[1] !== newval) {
-                                    grunt.log.writeln("-" + properties[1]);
+                                if (value !== newval) {
+                                    grunt.log.writeln("-" + value);
                                     grunt.log.writeln("+" + newval);
                                 }
-                                newprops = newprops + properties[0] + "=" + newval + "\n";
+                                newprops = newprops + key + "=" + newval + "\n";
                             }
                         });
                         file.props = newprops;
