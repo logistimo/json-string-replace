@@ -1,6 +1,6 @@
 {
   "name": "json-string-replace",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Replace strings in json values",
   "repository": "https://github.com/logistimo/json-string-replace",
   "author": {

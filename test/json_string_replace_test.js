@@ -31,9 +31,7 @@ exports.json_string_replace = {
     test.expect(1);
 
       var actual = grunt.file.read('test/fixtures/testing');
-      var expected = grunt.file.read('test/expected/testing_default');
-
-    test.equal(actual, expected, 'should describe what the default behavior is.');
+    test.equal(actual, '{"key":"Tasting","key2":"11,222,333"}', 'Expected does not match');
 
     test.done();
   },
@@ -43,7 +41,7 @@ exports.json_string_replace = {
 
       var actual = grunt.file.read('test/fixtures/123');
       var expected = grunt.file.read('test/expected/123_default');
-      test.equal(actual, expected, 'should describe what the default behavior is.');
+      test.equal(actual, expected, 'matches');
 
       test.done();
   }
